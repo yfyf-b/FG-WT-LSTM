@@ -9,7 +9,7 @@ To ensure complete transparency and enable peers to reproduce our methodological
 
 ## 📌 Core Modules Included
 
-1. `fg_lstm.py`
+1. `fglstm.py`
    - Contains the implementation of the Dynamic Frequency-Domain Gating (FG) module.
    - Contains the complete `FGLSTM` network class, demonstrating how pre-processed multi-scale wavelet sub-bands are adaptively routed and modulated before entering the temporal recurrence layers to address the Peak-Baseflow Trade-off.
 
