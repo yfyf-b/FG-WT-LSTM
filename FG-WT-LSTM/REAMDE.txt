@@ -1,3 +1,7 @@
+# 🚧 Coming Soon
+
+This repository is being prepared. The source code, model weights, and documentation will be made available shortly.
+
 # FG-WT-LSTM: Frequency-Gated Wavelet Transform LSTM
 
 ## 📌 Repository Overview & Open-Science Statement
