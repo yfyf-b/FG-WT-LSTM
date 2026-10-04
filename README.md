@@ -1,2 +1,28 @@
-# FG-WT-LSTM
+
 Code for "Frequency-Gated Wavelet-LSTM for Probabilistic Streamflow Forecasting"
+
+## 📌 Repository Overview & Open-Science Statement
+
+We are strongly committed to the principles of open science and reproducibility. However, the complete training, evaluation, and data-preprocessing pipeline utilized in our study is deeply integrated into a proprietary high-performance computing (HPC) framework for an ongoing operational flood-warning system. Due to strict institutional Non-Disclosure Agreements (NDAs) and pending intellectual property protections, the complete standalone training repository cannot be publicly released at this stage.
+
+To ensure complete transparency and enable peers to reproduce our methodological contributions, we have extracted and open-sourced the **core algorithmic modules**. Researchers can effortlessly integrate these modules into their own PyTorch-based hydrological pipelines (e.g., the standard [NeuralHydrology](https://github.com/neuralhydrology/neuralhydrology) framework).
+
+## 📌 Core Modules Included
+
+1. `fg_lstm.py`
+   - Contains the implementation of the Dynamic Frequency-Domain Gating (FG) module.
+   - Contains the complete `FGLSTM` network class, demonstrating how pre-processed multi-scale wavelet sub-bands are adaptively routed and modulated before entering the temporal recurrence layers to address the Peak-Baseflow Trade-off.
+
+2. `loss.py` (Probabilistic Optimization)
+   - Contains the implementation of the `MaskedGMMLoss`.
+   - Demonstrates the LogSumExp (LSE) stabilization technique for the Gaussian Mixture Model (GMM). This fundamentally resolves numerical underflow and gradient explosions when predicting heavy-tailed hydrograph outliers, without relying on heuristic loss penalties.
+
+
+
+## 📌Module Integration
+
+To improve accessibility and reusability of our core algorithm components, we have decoupled the proposed **FG‑WT‑LSTM architecture** and **LSE‑stabilized Loss** from our internally customized data‑preprocessing workflow.
+
+This repository focuses on providing lightweight, plug‑and‑play algorithm modules rather than an end‑to‑end, out‑of‑the‑box training application. For practical usage, we encourage researchers to integrate the two core files (`fg_lstm.py` and `loss.py`) into well‑established open‑source hydrological toolkits such as [NeuralHydrology](https://github.com/neuralhydrology/neuralhydrology).
+
+After importing these modules into the corresponding `modelzoo` and `training` folders of your target framework, you are able to adopt our frequency‑gating mechanism. Note that data‑loading and input‑output pipelines should be configured according to your own experimental setup.
